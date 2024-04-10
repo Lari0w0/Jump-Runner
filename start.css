@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+}
+@font-face {
+    font-family: 'pixelmon';
+    src: url(./assets/fonts/PixemontrialRegular-x3KqK.otf);
+}
+@font-face {
+    font-family: 'gamePaused';
+    src: url(./assets/fonts/gamepauseddemoregular-rpmy6.otf);
+}
+
+a {
+    text-decoration: none;
+    color: #292344;
+}
+.container{
+    width: 708px;
+    height: 708px;
+    background-color: #292344;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contente {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    font-family: 'pixelmon';
+    font-size: 30px;
+    margin: 20px;
+}
+.button {
+    background-color: #ffb500;
+    width: 60px;
+    padding: 10px ;
+    border-radius: 20px;
+    font-family: 'gamePaused';
+    font-size: 20px;
+    text-align: center;
+}
