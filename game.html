@@ -81,15 +81,24 @@
 </head>
 <body>
     <div class="game">
-        <div style="text-align: center;">
-            <h1><span id="tempo">0</span>pontos</h1>
+        <div id="blurBackground" style="position: absolute; z-index: 1; background-color: black; opacity: 0.6; width: 100%; height: 100%; display: none;"></div>
+        <div style="text-align: center;" id="previouslyTime">
+            <h1><span id="tempo">0</span> Pontos</h1>
+        </div>
+        <div style="position: absolute;text-align: center; display: none; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;" id="tentarNovamenteTela">
+            <h1><span id="tempoTotal">0</span> Pontos Total</h1>
+            <a href="index.html">
             <button style="
                 background-color: #ffb600;
                 border: 0;
-                padding: 5px;
+                padding: 8px 10px;
                 border-radius: 20px;
+                font-size: 18px;
                 color: #4A3AAA;
+                cursor: pointer;
+                margin: 5px;
                 ">Tentar novamente</button>
+            </a>
         </div>
         <img src="./assets/Gatito Pixel 64bits.png" id="lulao">
         <img src="./assets/Gatito do MAL.png" id="bob">
@@ -99,6 +108,8 @@
         let temporizador;
         const lulao = document.querySelector('#lulao');
         const bob = document.querySelector('#bob');
+        const previouslyTime = document.querySelector('#previouslyTime');
+        let tempoTotal = document.querySelector('#tempoTotal')
         const jump = () => {
             lulao.classList.add('jump');
             setTimeout(() => {
@@ -114,6 +125,10 @@
                 bob.style.left = `${bobPosition}px`;
                 lulao.style.animation = 'none';
                 lulao.style.bottom = `${lulaoPosition}px`;
+                previouslyTime.style.display = 'none';
+                tentarNovamenteTela.style.display = 'block';
+                blurBackground.style.display = 'block';
+                tempoTotal.innerText = tempoDecorrido
                 lulao.src = './assets/Gatito CHORANDO pixelart 64bits.png';    
                 // JOGAR NOVAMENTE
                 
