@@ -3,81 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-    font-family: "pixelmon";  
-    color: #fff;
-    }
-    @font-face {
-        font-family: "pixelmon";
-        src: url(./assets/fonts/PixemontrialRegular-x3KqK.otf);
-    }
-
-    .game{
-        background-image: url('./assets/Cenário\ Gatito\'s.png');
-        width: 700px;
-        height: 700px;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        overflow: hidden;
-        border: 8px solid #181120;
-    }
-
-    #bob{
-        position: absolute; 
-        bottom: 0;
-        width: 150px;
-        Animation: bob-animation 1.3s infinite linear;
-    }
-
-    #lulao{
-        width: 200px;
-        position: absolute;
-        bottom: 0;
-    }
-
-    .jump{
-        animation: jump 500ms ease-out;
-    }
-
-    @keyframes bob-animation {
-        from{
-            right: -200px;
-        }
-        to{
-            right: 100%;
-        }
-    }
-
-    @keyframes jump {
-        0%{
-            bottom: 0;
-        } 
-        20%{
-            bottom: 120px;
-        }  
-        40%{
-            bottom: 200px;
-        }
-        50%{
-            bottom: 250px;
-        }
-        60%{
-            bottom: 200px;
-        }
-        80%{
-            bottom: 120px;
-        }
-        100%{
-            bottom: 0;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="stylesGame.css">
+    <title>JumpRunner</title>
 </head>
 <body>
     <div class="game">
@@ -88,7 +15,7 @@
         <div style="position: absolute;text-align: center; display: none; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;" id="tentarNovamenteTela">
             <h1><span id="tempoTotal">0</span> Pontos Total</h1>
             <a href="index.html">
-            <button style="
+                <button style="
                 background-color: #ffb600;
                 border: 0;
                 padding: 8px 10px;
@@ -103,49 +30,6 @@
         <img src="./assets/Gatito Pixel 64bits.png" id="lulao">
         <img src="./assets/Gatito do MAL.png" id="bob">
     </div>
-    <script>
-        let tempoDecorrido = 0;
-        let temporizador;
-        const lulao = document.querySelector('#lulao');
-        const bob = document.querySelector('#bob');
-        const previouslyTime = document.querySelector('#previouslyTime');
-        let tempoTotal = document.querySelector('#tempoTotal')
-        const jump = () => {
-            lulao.classList.add('jump');
-            setTimeout(() => {
-                lulao.classList.remove('jump');
-            }, 500);
-        }
-
-        const loop = setInterval(() => {
-            const bobPosition = bob.offsetLeft;
-            const lulaoPosition = +window.getComputedStyle(lulao).bottom.replace('px','');
-            if (bobPosition <= 150 && bobPosition > 0 && lulaoPosition< 90){
-                bob.style.animation = 'none';
-                bob.style.left = `${bobPosition}px`;
-                lulao.style.animation = 'none';
-                lulao.style.bottom = `${lulaoPosition}px`;
-                previouslyTime.style.display = 'none';
-                tentarNovamenteTela.style.display = 'block';
-                blurBackground.style.display = 'block';
-                tempoTotal.innerText = tempoDecorrido
-                lulao.src = './assets/Gatito CHORANDO pixelart 64bits.png';    
-                // JOGAR NOVAMENTE
-                
-                clearInterval(loop);
-                clearInterval(temporizador)
-            }
-        },10)
-        document.addEventListener('keydown', jump);
-
-        tempoDecorrido = 0;
-        document.getElementById('tempo').innerText = tempoDecorrido;
-        temporizador = setInterval(atualizarTempo, 100);
-
-        function atualizarTempo() {
-            tempoDecorrido++;
-            document.getElementById('tempo').innerText = tempoDecorrido;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

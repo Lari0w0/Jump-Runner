@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: "pixelmon";  
+    color: #fff;
+    }
+    @font-face {
+        font-family: "pixelmon";
+        src: url(./assets/fonts/PixemontrialRegular-x3KqK.otf);
+    }
+
+    .game{
+        background-image: url('./assets/Cenário\ Gatito\'s.png');
+        width: 80vh;
+        height: 80vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+        border: 8px solid #181120;
+        font-size: 2vh;
+    }
+
+    #bob{
+        position: absolute; 
+        bottom: 0;
+        width: 20%;
+        Animation: bob-animation 1.3s infinite linear;
+    }
+
+    #lulao{
+        width: 30%;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .jump{
+        animation: jump 500ms ease-out;
+    }
+
+    @keyframes bob-animation {
+        from{
+            right: -200px;
+        }
+        to{
+            right: 100%;
+        }
+    }
+
+    @keyframes jump {
+        0%{
+            bottom: 0;
+        } 
+        20%{
+            bottom: 120px;
+        }  
+        40%{
+            bottom: 200px;
+        }
+        50%{
+            bottom: 250px;
+        }
+        60%{
+            bottom: 200px;
+        }
+        80%{
+            bottom: 120px;
+        }
+        100%{
+            bottom: 0;
+        }
+    }
